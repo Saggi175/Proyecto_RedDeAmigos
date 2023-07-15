@@ -7,6 +7,9 @@
             Console.WriteLine("Hello, World!");
             Console.WriteLine("Hola, Mundo!");
             Console.WriteLine("Hola Soy Agosto");
+            Console.WriteLine("Hola Soy Agosto");
+            Console.WriteLine("Hola Soy Mayo");
+
         }
     }
 }
