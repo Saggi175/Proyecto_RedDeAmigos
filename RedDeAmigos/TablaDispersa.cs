@@ -24,8 +24,16 @@ namespace RedDeAmigos
 
         public void Insertar(Persona persona)
         {
-            int posicion = Direccion(persona.Telefono.ToString());
-            tabla[posicion].AgregarPorCola(persona);
+            bool esRepetido = Buscar(persona.Telefono) != null;
+            if(!esRepetido)
+            {
+                int posicion = Direccion(persona.Telefono);
+                tabla[posicion].AgregarPorCola(persona);
+            }
+            else
+            {
+                Console.WriteLine($"El telefono ({persona.Telefono}) ya se encuentra registrado ");
+            }
         }
 
         public Persona Buscar(string clave)
@@ -76,18 +84,18 @@ namespace RedDeAmigos
                 ListaSimple lista = tabla[i];
                 Nodo actual = lista.RetornarNodo();
 
-                Console.WriteLine("Posición {0}:", i);
+                //Console.WriteLine("Posición {0}:", i);
 
                 while (actual != null)
                 {
-                    Console.WriteLine("Palabra: {0}", actual.Dato.Email);
+                    Console.WriteLine("Numeros: {0}", actual.Dato.Telefono);
                     
                     Console.WriteLine("------------------");
 
                     actual = actual.Siguiente;
                 }
 
-                Console.WriteLine();
+                //Console.WriteLine();
             }
         }
 

@@ -20,6 +20,7 @@ namespace RedDeAmigos
             Nombre = nombre;
             Apellido = apellido;
             Edad = edad;
+            Telefono = telefono;
             Email = email;
             amigos = new ListaSimple();
             solicitudDeAmistad = new Cola();
