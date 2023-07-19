@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,50 +22,69 @@ namespace RedDeAmigos
         {
             return _primero == null;
         }
-        public void AgregarPorCabeza(int valor)
+        public void AgregarPorCabeza(Persona valor)
         {
             NodoDoble nuevoNodo = new NodoDoble(valor);
-            if (EsVacia())
+
+            bool esRepetido = Buscar(valor.Email) != null;
+
+            if(!esRepetido)
             {
-                _primero = _ultimo = nuevoNodo;
-                _primero.Siguiente = _ultimo;
-                _primero.Anterior = _ultimo;
-                _ultimo.Siguiente = _primero;
-                _ultimo.Anterior = _primero;
+                if (EsVacia())
+                {
+                    _primero = _ultimo = nuevoNodo;
+                    _primero.Siguiente = _ultimo;
+                    _primero.Anterior = _ultimo;
+                    _ultimo.Siguiente = _primero;
+                    _ultimo.Anterior = _primero;
+                }
+                else
+                {
+                    nuevoNodo.Siguiente = _primero;
+                    nuevoNodo.Anterior = _primero.Anterior;
+                    _primero.Anterior = nuevoNodo;
+                    _primero = nuevoNodo;
+                    _ultimo.Siguiente = nuevoNodo;
+                }
+
+                cantidadDePersonas++;
             }
             else
             {
-                nuevoNodo.Siguiente = _primero;
-                nuevoNodo.Anterior = _primero.Anterior;
-                _primero.Anterior = nuevoNodo;
-                _primero = nuevoNodo;
-                _ultimo.Siguiente = nuevoNodo;
+                Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
-
-            cantidadDePersonas++;
 
         }
-        public void AgregarPorCola(int valor)
+        public void AgregarPorCola(Persona valor)
         {
-            NodoDoble nuevoNodo = new NodoDoble(valor);
-            if (EsVacia())
-            {
-                _primero = _ultimo = nuevoNodo;
-                _primero.Siguiente = _ultimo;
-                _primero.Anterior = _ultimo;
-                _ultimo.Siguiente = _primero;
-                _ultimo.Anterior = _primero;
-            }
-            else
-            {
-                nuevoNodo.Anterior = _ultimo;
-                nuevoNodo.Siguiente = _ultimo.Siguiente;
-                _ultimo.Siguiente = nuevoNodo;
-                _ultimo = nuevoNodo;
-                _primero.Anterior = _ultimo;
-            }
+            bool esRepetido = Buscar(valor.Email) != null;
 
-            cantidadDePersonas++;
+           if(!esRepetido)
+            {
+                NodoDoble nuevoNodo = new NodoDoble(valor);
+                if (EsVacia())
+                {
+                    _primero = _ultimo = nuevoNodo;
+                    _primero.Siguiente = _ultimo;
+                    _primero.Anterior = _ultimo;
+                    _ultimo.Siguiente = _primero;
+                    _ultimo.Anterior = _primero;
+                }
+                else
+                {
+                    nuevoNodo.Anterior = _ultimo;
+                    nuevoNodo.Siguiente = _ultimo.Siguiente;
+                    _ultimo.Siguiente = nuevoNodo;
+                    _ultimo = nuevoNodo;
+                    _primero.Anterior = _ultimo;
+                }
+
+                cantidadDePersonas++;
+            }
+           else
+            {
+                Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
+            }
 
         }
         public void Imprimir()
@@ -74,11 +94,10 @@ namespace RedDeAmigos
             {
                 do
                 {
-                    Console.Write(auxiliar.Dato + " -> ");
+                    Console.WriteLine(auxiliar.Dato.Email);
                     auxiliar = auxiliar.Siguiente;
                 }
                 while (auxiliar != _primero);
-                Console.WriteLine("Null");
             }
         }
         public void ImprimirReversa()
@@ -88,63 +107,72 @@ namespace RedDeAmigos
             {
                 do
                 {
-                    Console.Write(auxiliar.Dato + " -> ");
+                    Console.WriteLine(auxiliar.Dato.Email);
                     auxiliar = auxiliar.Anterior;
                 }
                 while (auxiliar != _ultimo);
-                Console.WriteLine("Null");
             }
         }
-        public void AgregarOrdenado(int valor)
+        public void AgregarOrdenado(Persona valor)
         {
             NodoDoble nuevoNodo = new NodoDoble(valor);
 
-            if (EsVacia())
+            bool esRepetido = Buscar(valor.Email) != null;
+
+            if (!esRepetido)
             {
-                _primero = _ultimo = nuevoNodo;
-                nuevoNodo.Siguiente = nuevoNodo;
-                nuevoNodo.Anterior = nuevoNodo;
-            }
-            else
-            {
-                if (nuevoNodo.Dato < _primero.Dato)
+                if (EsVacia())
                 {
-                    nuevoNodo.Siguiente = _primero;
-                    nuevoNodo.Anterior = _ultimo;
-                    _primero.Anterior = nuevoNodo;
-                    _primero = nuevoNodo;
-                    _ultimo.Siguiente = nuevoNodo;
+                    _primero = _ultimo = nuevoNodo;
+                    nuevoNodo.Siguiente = nuevoNodo;
+                    nuevoNodo.Anterior = nuevoNodo;
                 }
                 else
                 {
-                    NodoDoble auxiliar = _primero;
-
-                    while (auxiliar.Siguiente != _primero && nuevoNodo.Dato >= auxiliar.Siguiente.Dato)
+                    if (nuevoNodo.Dato.Nombre.CompareTo(_primero.Dato.Nombre) < 0)
                     {
-                        auxiliar = auxiliar.Siguiente;
+                        nuevoNodo.Siguiente = _primero;
+                        nuevoNodo.Anterior = _ultimo;
+                        _primero.Anterior = nuevoNodo;
+                        _primero = nuevoNodo;
+                        _ultimo.Siguiente = nuevoNodo;
                     }
-
-                    nuevoNodo.Siguiente = auxiliar.Siguiente;
-                    nuevoNodo.Anterior = auxiliar;
-                    auxiliar.Siguiente = nuevoNodo;
-                    nuevoNodo.Siguiente.Anterior = nuevoNodo;
-                    if (nuevoNodo.Siguiente == _primero)
+                    else
                     {
-                        _ultimo = nuevoNodo;
+                        NodoDoble auxiliar = _primero;
+
+                        while (auxiliar.Siguiente != _primero && nuevoNodo.Dato.Nombre.CompareTo(auxiliar.Dato.Nombre) >= 0)
+                        {
+                            auxiliar = auxiliar.Siguiente;
+                        }
+
+                        nuevoNodo.Siguiente = auxiliar.Siguiente;
+                        nuevoNodo.Anterior = auxiliar;
+                        auxiliar.Siguiente = nuevoNodo;
+                        nuevoNodo.Siguiente.Anterior = nuevoNodo;
+                        if (nuevoNodo.Siguiente == _primero)
+                        {
+                            _ultimo = nuevoNodo;
+                        }
                     }
                 }
+
+                cantidadDePersonas++;
+            }
+            else
+            {
+                Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
 
-            cantidadDePersonas++;
 
         }
-        public void EliminarPorValor(int valor)
+        public void EliminarPorValor(string email)
         {
             if (EsVacia())
             {
                 throw new Exception("La lista esta vacia");
             }
-            else if (_primero.Dato == valor)
+            else if (_primero.Dato.Email == email)
             {
                 NodoDoble tmp = _primero;
                 tmp.Anterior.Siguiente = tmp.Siguiente;
@@ -153,7 +181,7 @@ namespace RedDeAmigos
                 _primero.Anterior = null;
                 tmp.Siguiente = null;
                 tmp.Anterior = null;
-                tmp.Dato = 0;
+                tmp.Dato = null;
                 cantidadDePersonas--;
                 return;
 
@@ -167,7 +195,7 @@ namespace RedDeAmigos
             else
             {
                 NodoDoble auxiliar = _primero;
-                while (auxiliar.Siguiente != _primero && valor >= auxiliar.Siguiente.Dato)
+                while (auxiliar.Siguiente != _primero && email.CompareTo(auxiliar.Siguiente.Dato.Email) != 0 )
                 {
                     auxiliar = auxiliar.Siguiente;
                 }
@@ -182,7 +210,7 @@ namespace RedDeAmigos
 
                 tmp.Siguiente = null;
                 tmp.Anterior = null;
-                tmp.Dato = 0;
+                tmp.Dato = null;
 
                 if (auxiliar.Siguiente == _primero)
                     _ultimo = auxiliar;
@@ -236,52 +264,80 @@ namespace RedDeAmigos
 
             }
         }
-        public void AgregarEnPosicion(int n, int posicion)
+        public void AgregarEnPosicion(Persona valor, int posicion)
         {
-            NodoDoble nuevoNodo = new NodoDoble(n);
+            NodoDoble nuevoNodo = new NodoDoble(valor);
 
-            if (posicion == 0)
+            bool esRepetido = Buscar(valor.Email) != null;
+
+            if (!esRepetido)
             {
-                if (EsVacia())
+                if (posicion == 0)
                 {
-                    _primero = _ultimo = nuevoNodo;
+                    if (EsVacia())
+                    {
+                        _primero = _ultimo = nuevoNodo;
+                    }
+                    else
+                    {
+                        nuevoNodo.Siguiente = _primero;
+                        nuevoNodo.Anterior = _primero.Anterior;
+                        _primero.Anterior.Siguiente = nuevoNodo;
+                        _primero.Anterior = nuevoNodo;
+                        _primero = nuevoNodo;
+
+                    }
+
                 }
                 else
                 {
-                    nuevoNodo.Siguiente = _primero;
-                    nuevoNodo.Anterior = _primero.Anterior;
-                    _primero.Anterior.Siguiente = nuevoNodo;
-                    _primero.Anterior = nuevoNodo;
-                    _primero = nuevoNodo;
+                    NodoDoble aux = _primero;
+                    int contador = 0;
 
+                    while (aux != null && contador < posicion - 1)
+                    {
+                        aux = aux.Siguiente;
+                        contador++;
+                    }
+
+                    if (aux != null)
+                    {
+                        nuevoNodo.Siguiente = aux.Siguiente;
+                        aux.Siguiente = nuevoNodo;
+
+                        if (aux == _ultimo)
+                        {
+                            _ultimo = nuevoNodo;
+                        }
+                    }
                 }
 
+                cantidadDePersonas++;
             }
             else
             {
-                NodoDoble aux = _primero;
-                int contador = 0;
-
-                while (aux != null && contador < posicion - 1)
-                {
-                    aux = aux.Siguiente;
-                    contador++;
-                }
-
-                if (aux != null)
-                {
-                    nuevoNodo.Siguiente = aux.Siguiente;
-                    aux.Siguiente = nuevoNodo;
-
-                    if (aux == _ultimo)
-                    {
-                        _ultimo = nuevoNodo;
-                    }
-                }
+                Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
 
-            cantidadDePersonas++;
+        }
+        public Persona Buscar(string valor)
+        {
+            if(_primero != null)
+            {
 
+                NodoDoble actual = _primero;
+                do
+                {
+                    if (actual.Dato.Email.ToString() == valor)
+                    {
+                        return actual.Dato;
+                    }
+                    actual = actual.Siguiente;
+                }
+                while (actual != _primero);
+            }
+
+            return null;
         }
         public int CantidadDePersonas()
         {

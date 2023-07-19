@@ -16,7 +16,7 @@ namespace RedDeAmigos
             _primero = _ultimo = null;
             cantidadDeAmigos = 0;
         }
-        public bool EsVacio()
+        public bool EsVacia()
         {
             return _primero == null;
         }
@@ -24,7 +24,7 @@ namespace RedDeAmigos
         {
             Nodo nuevoNodo = new Nodo(valor);
 
-            if (EsVacio())
+            if (EsVacia())
             {
                 _primero = _ultimo = nuevoNodo;
             }
@@ -37,17 +37,28 @@ namespace RedDeAmigos
         }
         public void AgregarPorCola(Persona valor)
         {
-            Nodo nuevoNodo = new Nodo(valor);
-            if (EsVacio())
+            bool correoRepetido = Buscar(valor.Email) != null;
+
+            if (!correoRepetido)
             {
-                _primero = _ultimo = nuevoNodo;
+                Nodo nuevoNodo = new Nodo(valor);
+                if (EsVacia())
+                {
+                    _primero = _ultimo = nuevoNodo;
+                }
+                else
+                {
+                    _ultimo.Siguiente = nuevoNodo;
+                    _ultimo = nuevoNodo;
+                }
+                cantidadDeAmigos++;
             }
             else
             {
-                _ultimo.Siguiente = nuevoNodo;
-                _ultimo = nuevoNodo;
+                Console.WriteLine("\nEste correo ya esta registrado");
             }
-            cantidadDeAmigos++;
+
+            
 
         }
         public void Imprimir()
@@ -61,13 +72,13 @@ namespace RedDeAmigos
             Console.WriteLine("Null");
 
         }
-        public void EliminarPorValor(Persona valor)
+        public void EliminarPorValor(string email)//Creo que debo cambiar este tipo persona por un estrin que representa un email o numero de telefono.
         {
             Nodo auxiliar = _primero;
-            if (EsVacio())
+            if (EsVacia())
                 return;
 
-            if (auxiliar.Dato == valor)
+            if (auxiliar.Dato.Email == email)
             {
                 Nodo tmp = _primero;
                 _primero = tmp.Siguiente;
@@ -80,7 +91,7 @@ namespace RedDeAmigos
             {
                 while (auxiliar != null)
                 {
-                    if (auxiliar.Siguiente != null && auxiliar.Siguiente.Dato == valor)
+                    if (auxiliar.Siguiente != null && auxiliar.Siguiente.Dato.Email == email)
                     {
                         Nodo tmp = auxiliar.Siguiente;
 
@@ -141,7 +152,7 @@ namespace RedDeAmigos
         {
             Nodo nuevoNodo = new Nodo(valor);
 
-            if (EsVacio())
+            if (EsVacia())
             {
                 _primero = _ultimo = nuevoNodo;
             }
@@ -175,7 +186,7 @@ namespace RedDeAmigos
         public void EliminarPorPosicion(int posicion)
         {
             Nodo auxilar = _primero;
-            if (EsVacio())
+            if (EsVacia())
             {
                 throw new Exception("La lista esta vacia");
             }
@@ -214,13 +225,16 @@ namespace RedDeAmigos
             cantidadDeAmigos--;
 
         }
-
+        public Nodo RetornarNodo()
+        {
+            return _primero;
+        }
         public Persona Buscar(string valor)
         {
             Nodo actual = _primero;
             while (actual != null)
             {
-                if (actual.Dato.Telefono.ToString() == valor)
+                if (actual.Dato.Email.ToString() == valor)
                 {
                     return actual.Dato;
                 }

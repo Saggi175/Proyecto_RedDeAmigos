@@ -73,15 +73,15 @@ namespace RedDeAmigos
         {
             for (int i = 0; i < _tamanoTabla; i++)
             {
-                ListaDoble lista = tabla[i];
-                NodoDoble actual = lista.RetornarNodo();
+                ListaSimple lista = tabla[i];
+                Nodo actual = lista.RetornarNodo();
 
                 Console.WriteLine("Posición {0}:", i);
 
                 while (actual != null)
                 {
-                    Console.WriteLine("Palabra: {0}", actual.Dato.Palabra);
-                    Console.WriteLine("Definición: {0}", actual.Dato.Descripcion);
+                    Console.WriteLine("Palabra: {0}", actual.Dato.Email);
+                    
                     Console.WriteLine("------------------");
 
                     actual = actual.Siguiente;

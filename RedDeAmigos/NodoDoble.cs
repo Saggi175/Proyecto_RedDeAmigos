@@ -8,11 +8,11 @@ namespace RedDeAmigos
 {
     internal class NodoDoble
     {
-        public int Dato { get; set; }
+        public Persona Dato { get; set; }
         public NodoDoble? Siguiente { get; set; }
         public NodoDoble? Anterior { get; set; }
 
-        public NodoDoble(int dato)
+        public NodoDoble(Persona dato)
         {
             Dato = dato;
             Anterior = Siguiente = null;
