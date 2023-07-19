@@ -14,10 +14,10 @@
             personas.AgregarPorCola(new Persona("Julio", "Pichardo", 19, "829 767 5954", "juliopichardo@gmail.com"));
             Directorio.Insertar(personas.Buscar("juliopichardo@gmail.com"));
             
-            personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 767 5954", "Robelin@gmail.com"));
+            personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 768 5954", "Robelin@gmail.com"));
             Directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
 
-            personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 767 5954", "Robelin@gmail.com"));
+            personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 768 5954", "Robelin@gmail.com"));
             Directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
 
 
