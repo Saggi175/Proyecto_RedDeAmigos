@@ -219,16 +219,15 @@ namespace RedDeAmigos
                         if (actual.Siguiente == null)
                             _ultimo = actual;
                     }
-
                 }
-            }
-            cantidadDeAmigos--;
-
+            }cantidadDeAmigos--;
         }
+
         public Nodo RetornarNodo()
         {
             return _primero;
         }
+
         public Persona BuscarPorTelefono(string valor)
         {
             Nodo actual = _primero;
@@ -242,6 +241,7 @@ namespace RedDeAmigos
             }
             return null;
         }
+
         public Persona Buscar(string valor)
         {
             Nodo actual = _primero;
@@ -255,6 +255,5 @@ namespace RedDeAmigos
             }
             return null;
         }
-    }
-  
+    }  
 }

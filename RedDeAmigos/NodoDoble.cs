@@ -16,7 +16,6 @@ namespace RedDeAmigos
         {
             Dato = dato;
             Anterior = Siguiente = null;
-
         }
     }
 }

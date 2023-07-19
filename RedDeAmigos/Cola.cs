@@ -15,10 +15,12 @@ namespace RedDeAmigos
         {
             cima = _ultimo = null;
         }
+
         public bool EsVacia()
         {
             return cima == null;
         }
+
         public void Push(Persona valor)
         {
             Nodo nuevoNodo = new Nodo(valor);
@@ -33,6 +35,7 @@ namespace RedDeAmigos
                 _ultimo = nuevoNodo;
             }
         }
+
         public Nodo Pop()
         {
             Nodo auxiliar = cima;
@@ -49,6 +52,7 @@ namespace RedDeAmigos
                 return auxiliar;
             }
         }
+
         public Nodo PeekNodo()
         {
             Nodo nuevoNodo = new Nodo(cima.Dato);
@@ -57,8 +61,8 @@ namespace RedDeAmigos
                 return null;
 
             return nuevoNodo;
-
         }
+
         //public int PeeKValor()
         //{
         //    if (EsVacia())
@@ -66,6 +70,7 @@ namespace RedDeAmigos
 
         //    return cima.Dato;
         //}
+
         public void Imprimir()
         {
             Nodo auxiliar = cima;
@@ -76,7 +81,6 @@ namespace RedDeAmigos
                 auxiliar = auxiliar.Siguiente;
             }
             Console.WriteLine("Null");
-
         }
     }
 }

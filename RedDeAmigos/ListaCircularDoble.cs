@@ -23,10 +23,12 @@ namespace RedDeAmigos
             _primero = _ultimo = null;
             cantidadDePersonas = 0;
         }
+
         public bool EsVacia()
         {
             return _primero == null;
         }
+
         public void AgregarPorCabeza(Persona valor)
         {
             NodoDoble nuevoNodo = new NodoDoble(valor);
@@ -51,15 +53,14 @@ namespace RedDeAmigos
                     _primero = nuevoNodo;
                     _ultimo.Siguiente = nuevoNodo;
                 }
-
                 cantidadDePersonas++;
             }
             else
             {
                 Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
-
         }
+
         public void AgregarPorCola(Persona valor)
         {
             bool esRepetido = Buscar(valor.Email) != null;
@@ -83,15 +84,14 @@ namespace RedDeAmigos
                     _ultimo = nuevoNodo;
                     _primero.Anterior = _ultimo;
                 }
-
                 cantidadDePersonas++;
             }
            else
             {
                 Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
-
         }
+
         public void Imprimir()
         {
             NodoDoble auxiliar = _primero;
@@ -105,6 +105,7 @@ namespace RedDeAmigos
                 while (auxiliar != _primero);
             }
         }
+
         public void ImprimirReversa()
         {
             NodoDoble auxiliar = _ultimo;
@@ -118,6 +119,7 @@ namespace RedDeAmigos
                 while (auxiliar != _ultimo);
             }
         }
+
         public void AgregarOrdenado(Persona valor)
         {
             NodoDoble nuevoNodo = new NodoDoble(valor);
@@ -161,16 +163,14 @@ namespace RedDeAmigos
                         }
                     }
                 }
-
                 cantidadDePersonas++;
             }
             else
             {
                 Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
-
-
         }
+
         public void EliminarPorValor(string email)
         {
             if (EsVacia())
@@ -190,12 +190,9 @@ namespace RedDeAmigos
                 cantidadDePersonas--;
                 return;
 
-
-
                 //_primero = _primero.Siguiente;
                 //_primero.Anterior = _ultimo;
                 //_ultimo.Siguiente = _primero;
-
             }
             else
             {
@@ -219,9 +216,9 @@ namespace RedDeAmigos
 
                 if (auxiliar.Siguiente == _primero)
                     _ultimo = auxiliar;
-
             }
         }
+
         public void EliminarPorPosicion(int posicion)
         {
             if (EsVacia())
@@ -235,7 +232,6 @@ namespace RedDeAmigos
                 _primero.Anterior.Siguiente = _primero.Siguiente;
                 _primero = _primero.Siguiente;
                 cantidadDePersonas--;
-
 
                 if (_primero == null)
                 {
@@ -264,11 +260,10 @@ namespace RedDeAmigos
                         _ultimo = aux;
                     }
                 }
-
                 cantidadDePersonas--;
-
             }
         }
+
         public void AgregarEnPosicion(Persona valor, int posicion)
         {
             NodoDoble nuevoNodo = new NodoDoble(valor);
@@ -290,9 +285,7 @@ namespace RedDeAmigos
                         _primero.Anterior.Siguiente = nuevoNodo;
                         _primero.Anterior = nuevoNodo;
                         _primero = nuevoNodo;
-
                     }
-
                 }
                 else
                 {
@@ -316,15 +309,14 @@ namespace RedDeAmigos
                         }
                     }
                 }
-
                 cantidadDePersonas++;
             }
             else
             {
                 Console.WriteLine($"El correo ({valor.Email}) ya se encuentra registrado ");
             }
-
         }
+
         public Persona Buscar(string valor)
         {
             if(_primero != null)
@@ -341,9 +333,9 @@ namespace RedDeAmigos
                 }
                 while (actual != _primero);
             }
-
             return null;
         }
+
         public int CantidadDePersonas()
         {
             return cantidadDePersonas;

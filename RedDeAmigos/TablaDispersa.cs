@@ -61,7 +61,6 @@ namespace RedDeAmigos
                 p = p + i * i;
                 p = p % _tamanoTabla;
             }
-
             return (int)p;
         }
 
@@ -77,6 +76,7 @@ namespace RedDeAmigos
 
             return d;
         }
+
         public void Imprimir()
         {
             for (int i = 0; i < _tamanoTabla; i++)
@@ -94,10 +94,8 @@ namespace RedDeAmigos
 
                     actual = actual.Siguiente;
                 }
-
                 //Console.WriteLine();
             }
         }
-
     }
 }
