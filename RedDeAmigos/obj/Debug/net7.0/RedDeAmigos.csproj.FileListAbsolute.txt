@@ -1,0 +1,15 @@
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\bin\Debug\net7.0\RedDeAmigos.exe
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\bin\Debug\net7.0\RedDeAmigos.deps.json
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\bin\Debug\net7.0\RedDeAmigos.runtimeconfig.json
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\bin\Debug\net7.0\RedDeAmigos.dll
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\bin\Debug\net7.0\RedDeAmigos.pdb
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.csproj.AssemblyReference.cache
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.AssemblyInfoInputs.cache
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.AssemblyInfo.cs
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.csproj.CoreCompileInputs.cache
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.dll
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\refint\RedDeAmigos.dll
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.pdb
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\RedDeAmigos.genruntimeconfig.cache
+C:\Users\El amor de tu vida\Desktop\proyectoRedAmigos\RedDeAmigos\obj\Debug\net7.0\ref\RedDeAmigos.dll
