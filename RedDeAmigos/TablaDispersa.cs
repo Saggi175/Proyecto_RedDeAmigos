@@ -24,8 +24,8 @@ namespace RedDeAmigos
 
         public void Insertar(Persona persona)
         {
-            bool esRepetido = Buscar(persona.Telefono) != null;
-            if(!esRepetido)
+            bool esRepetido = Buscar(persona.Telefono)!= null; //No detecta los numeros 
+            if (!esRepetido)
             {
                 int posicion = Direccion(persona.Telefono);
                 tabla[posicion].AgregarPorCola(persona);
@@ -39,7 +39,7 @@ namespace RedDeAmigos
         public Persona Buscar(string clave)
         {
             int posicion = Direccion(clave);
-            return tabla[posicion].Buscar(clave);
+            return tabla[posicion].BuscarPorTelefono(clave);
         }
 
         public void Eliminar(string clave)
@@ -55,7 +55,7 @@ namespace RedDeAmigos
             d = TransformaCadena(clave);
             p = d % _tamanoTabla;
 
-            while (!tabla[p].EsVacia() && tabla[p].Buscar(clave) == null)
+            while (!tabla[p].EsVacia() && tabla[p].BuscarPorTelefono(clave) == null)
             {
                 i++;
                 p = p + i * i;

@@ -37,7 +37,7 @@ namespace RedDeAmigos
         }
         public void AgregarPorCola(Persona valor)
         {
-            bool correoRepetido = Buscar(valor.Email) != null;
+            bool correoRepetido = BuscarPorTelefono(valor.Email) != null;
 
             if (!correoRepetido)
             {
@@ -229,6 +229,19 @@ namespace RedDeAmigos
         {
             return _primero;
         }
+        public Persona BuscarPorTelefono(string valor)
+        {
+            Nodo actual = _primero;
+            while (actual != null)
+            {
+                if (actual.Dato.Telefono.ToString() == valor)
+                {
+                    return actual.Dato;
+                }
+                actual = actual.Siguiente;
+            }
+            return null;
+        }
         public Persona Buscar(string valor)
         {
             Nodo actual = _primero;
@@ -242,7 +255,19 @@ namespace RedDeAmigos
             }
             return null;
         }
-
+        public Persona Buscarr(string valor)
+        {
+            Nodo actual = _primero;
+            while (actual != null)
+            {
+                if (actual.Dato.Telefono.ToString() == valor)
+                {
+                    return actual.Dato;
+                }
+                actual = actual.Siguiente;
+            }
+            return null;
+        }
 
 
     }

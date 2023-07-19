@@ -17,6 +17,8 @@
             personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 767 5954", "Robelin@gmail.com"));
             Directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
 
+            personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 767 5954", "Robelin@gmail.com"));
+            Directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
 
 
             personas.Imprimir();
