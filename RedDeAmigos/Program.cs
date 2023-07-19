@@ -14,9 +14,7 @@
             
 
             personas.Imprimir();
-            Console.WriteLine(personas.CantidadDePersonas());
-            Console.WriteLine(personas.CantidadDePersonas());
-
+            Console.WriteLine("Cantidad De Personas en la Red Social: "+personas.CantidadDePersonas());
         }
     }
 }
