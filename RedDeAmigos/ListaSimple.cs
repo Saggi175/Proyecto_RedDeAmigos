@@ -255,21 +255,6 @@ namespace RedDeAmigos
             }
             return null;
         }
-        public Persona Buscarr(string valor)
-        {
-            Nodo actual = _primero;
-            while (actual != null)
-            {
-                if (actual.Dato.Telefono.ToString() == valor)
-                {
-                    return actual.Dato;
-                }
-                actual = actual.Siguiente;
-            }
-            return null;
-        }
-
-
     }
   
 }
