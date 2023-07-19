@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        const int m = 89;
         static void Main(string[] args)
         {
             ListaCircularDoble personas = new ListaCircularDoble();
@@ -11,10 +12,11 @@
 
             personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "809 533 1389", "Robelin@gmail.com"));
 
-            
+            TablaDispersa Directorio = new TablaDispersa(m);
+            Directorio.Insertar(personas.getUltimo().Dato);
 
             personas.Imprimir();
-            Console.WriteLine("Cantidad De Personas en la Red Social: "+personas.CantidadDePersonas());
+            Console.WriteLine("Cantidad De Personas en la Red Social: " + personas.CantidadDePersonas());
         }
     }
 }

@@ -13,6 +13,11 @@ namespace RedDeAmigos
         private NodoDoble _ultimo;
         private int cantidadDePersonas;
 
+        public NodoDoble getUltimo()
+        {
+            return _ultimo;
+        }
+
         public ListaCircularDoble()
         {
             _primero = _ultimo = null;
