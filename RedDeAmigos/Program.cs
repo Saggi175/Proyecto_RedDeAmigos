@@ -15,6 +15,7 @@
 
             personas.Imprimir();
             Console.WriteLine(personas.CantidadDePersonas());
+            Console.WriteLine(personas.CantidadDePersonas());
 
         }
     }
