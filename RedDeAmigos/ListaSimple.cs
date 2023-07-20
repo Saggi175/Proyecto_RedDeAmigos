@@ -58,7 +58,29 @@ namespace RedDeAmigos
                 Console.WriteLine("\nEste correo ya esta registrado");
             }
 
-            
+        }
+        public void AgregaPorEmail(ListaCircularDoble valor, string email)// es un agregar por cola modificado para que agrege por email
+        {
+            bool correoRepetido = BuscarPorEmail(valor.Buscar(email).Email) != null;//Creo que hace falta hacer que verifique que no te este entrando a ti mismo en el coreo
+
+            if (!correoRepetido)
+            {
+                Nodo nuevoNodo = new Nodo(valor.Buscar(email));
+                if (EsVacia())
+                {
+                    _primero = _ultimo = nuevoNodo;
+                }
+                else
+                {
+                    _ultimo.Siguiente = nuevoNodo;
+                    _ultimo = nuevoNodo;
+                }
+                cantidadDeAmigos++;
+            }
+            else
+            {
+                Console.WriteLine($"\nEste correo ({email}) ya esta registrado");
+            }
 
         }
         public void Imprimir()
@@ -66,7 +88,7 @@ namespace RedDeAmigos
             Nodo auxliar = _primero;
             while (auxliar != null)
             {
-                Console.Write(auxliar.Dato + " -> ");
+                Console.Write(auxliar.Dato.Nombre + " -> ");
                 auxliar = auxliar.Siguiente;
             }
             Console.WriteLine("Null");
@@ -242,12 +264,12 @@ namespace RedDeAmigos
             return null;
         }
 
-        public Persona Buscar(string valor)
+        public Persona BuscarPorEmail(string email)
         {
             Nodo actual = _primero;
             while (actual != null)
             {
-                if (actual.Dato.Email.ToString() == valor)
+                if (actual.Dato.Email.ToString() == email)
                 {
                     return actual.Dato;
                 }
