@@ -25,15 +25,19 @@
             //Directorio.Imprimir();
             //Console.WriteLine("Cantidad De Personas en la Red Social: " + personas.CantidadDePersonas());
 
-            personas.Buscar("alexander@gmail.com").amigos.AgregaPorEmail(personas, "juliopichardo@gmail.com"); // se esta agragando un amigo por email
-            personas.Buscar("alexander@gmail.com").amigos.AgregaPorEmail(personas, "Robelin@gmail.com"); // se esta agragando un amigo por email
-            personas.Buscar("alexander@gmail.com").amigos.AgregaPorEmail(personas, "samuelalvarado@gmail.com"); // se esta agragando un amigo por email
-            personas.Buscar("alexander@gmail.com").amigos.AgregaPorEmail(personas, "alexander@gmail.com"); // se esta agragando un amigo por email
-            personas.Buscar("alexander@gmail.com").amigos.AgregaPorEmail(personas, "alexander@gmail.com"); // se esta agragando un amigo por email
+            personas.Buscar("alexander@gmail.com").solicitudDeAmistad.PushPorEmail(personas, "juliopichardo@gmail.com"); // se esta agragando un amigo por email
+            personas.Buscar("alexander@gmail.com").solicitudDeAmistad.PushPorEmail(personas, "Robelin@gmail.com");
+            personas.Buscar("alexander@gmail.com").solicitudDeAmistad.PushPorEmail(personas, "samuelalvarado@gmail.com"); 
+            personas.Buscar("alexander@gmail.com").solicitudDeAmistad.PushPorEmail(personas, "juliopichardo@gmail.com");
+
+
+            personas.Buscar("alexander@gmail.com").amigos.AgregarPorCola(personas.Buscar("alexander@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
+
+            personas.Buscar("alexander@gmail.com").amigos.Imprimir();
 
             //Si dice que ya hay un corroe intruducido cuando ejecuta, es a posta, para probar que no se puedan repatir correos
 
-            personas.Buscar("alexander@gmail.com").amigos.Imprimir();// esto es una prebua, no es la vesion final
+            //personas.Buscar("alexander@gmail.com").solicitudDeAmistad.Imprimir();// esto es una prebua, no es la vesion final
 
         }
     }

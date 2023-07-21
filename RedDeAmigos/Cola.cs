@@ -35,7 +35,44 @@ namespace RedDeAmigos
                 _ultimo = nuevoNodo;
             }
         }
+        public void PushPorEmail(ListaCircularDoble persona, string email)// es un agregar por cola modificado para que agrege por email
+        {
+            bool correoRepetido = BuscarPorEmail(persona.Buscar(email).Email)!= null;//Creo que hace falta hacer que verifique que no te este entrando a ti mismo en el correo
+            
+            
+            if (!correoRepetido)
+            {
+                Nodo nuevoNodo = new Nodo(persona.Buscar(email));
+                if (EsVacia())
+                {
+                    cima = _ultimo = nuevoNodo;
+                }
+                else
+                {
+                    _ultimo.Siguiente = nuevoNodo;
+                    _ultimo = nuevoNodo;
+                }
+                //cantidadDeAmigos++;
+            }
+            else
+            {
+                Console.WriteLine($"\nEste correo ({email}) ya esta registrado en la cola de solicitud ");
+            }
 
+        }
+        public Persona BuscarPorEmail(string email)
+        {
+            Nodo actual = cima;
+            while (actual != null)
+            {
+                if (actual.Dato.Email.ToString() == email)
+                {
+                    return actual.Dato;
+                }
+                actual = actual.Siguiente;
+            }
+            return null;
+        }
         public Nodo Pop()
         {
             Nodo auxiliar = cima;
@@ -75,12 +112,13 @@ namespace RedDeAmigos
         {
             Nodo auxiliar = cima;
 
+            Console.WriteLine("Solicitudes de amistad");
+
             while (auxiliar != null)
             {
-                Console.Write(auxiliar.Dato + " -> ");
+                Console.WriteLine(auxiliar.Dato.Nombre);
                 auxiliar = auxiliar.Siguiente;
             }
-            Console.WriteLine("Null");
         }
     }
 }
