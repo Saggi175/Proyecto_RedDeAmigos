@@ -17,7 +17,10 @@ namespace RedDeAmigos
         {
             return _ultimo;
         }
-
+        public NodoDoble getPrimero()
+        {
+            return _primero;
+        }
         public ListaCircularDoble()
         {
             _primero = _ultimo = null;
