@@ -37,7 +37,7 @@ namespace RedDeAmigos
         }
         public void AgregarPorCola(Persona valor)
         {
-            bool correoRepetido = BuscarPorTelefono(valor.Email) != null;
+            bool correoRepetido = BuscarPorEmail(valor.Email) != null;
 
             if (!correoRepetido)
             {

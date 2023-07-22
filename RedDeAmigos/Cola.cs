@@ -52,7 +52,7 @@ namespace RedDeAmigos
                     _ultimo.Siguiente = nuevoNodo;
                     _ultimo = nuevoNodo;
                 }
-                //cantidadDeAmigos++;
+                
             }
             else
             {

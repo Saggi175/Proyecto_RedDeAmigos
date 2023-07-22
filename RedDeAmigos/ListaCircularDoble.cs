@@ -343,5 +343,31 @@ namespace RedDeAmigos
         {
             return cantidadDePersonas;
         }
+        public void ImprimirAmigosEnComun()
+        {
+            Console.WriteLine("Personas que comparten amistad:");
+
+            NodoDoble actual = _primero;
+
+            while (actual != null)
+            {
+                Nodo amigoActual = actual.Dato.amigos.RetornarNodo();
+
+                while (amigoActual != null)
+                {
+                    if (amigoActual.Dato.amigos.BuscarPorEmail(actual.Dato.Email) != null)
+                    {
+                        Console.WriteLine($"{actual.Dato.Nombre} - {amigoActual.Dato.Nombre} comparten amistad");
+                    }
+                    amigoActual = amigoActual.Siguiente;
+                }
+                actual = actual.Siguiente;
+
+                if (actual == _primero) // Evitar bucle infinito en una lista circular
+                {
+                    break;
+                }
+            }
+        }
     }
 }
