@@ -191,7 +191,7 @@ Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}
                             if (aceptar.ToLower() == "a")
                             {
                                 personas.Buscar(personaActual.Dato.Email).amigos.AgregarPorCola(personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.Pop().Dato);
-                                personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.CantidadDeSolicitud--;
+                               
                             }
                             else if (aceptar.ToLower() == "r")
                             {
