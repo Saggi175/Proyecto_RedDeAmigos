@@ -300,37 +300,6 @@ Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}
 
                         Console.ReadLine();
                         Console.Clear();
-                        //personaActual.Dato.amigos.ImprimirListaDeAmigosMutuos( personaActual.Dato.Email);
-                        //                        NodoDoble auxiliarExtra = personas.getPrimero();
-                        //                        do
-                        //                        {
-                        //                            if (auxiliarExtra.Dato.amigos.BuscarPorEmail(personaActual.Dato.Email)?.Email == null &&
-                        //                                auxiliarExtra.Dato.Email != personaActual.Dato.Email)
-                        //                            {
-
-                        //                                Console.Write(@$"       
-                        //╔════════════════════════════════════════════╗
-                        //║                                            ║
-                        //║                                            ║
-
-                        //");
-                        //                                Console.WriteLine($"\tNombre:{auxiliarExtra.Dato.Nombre} {auxiliarExtra.Dato.Apellido} \t\t\n");
-
-                        //                                Console.WriteLine($"\tEdad: {auxiliarExtra.Dato.Edad} \t\t\n");
-                        //                                Console.WriteLine($"\tEmail: {auxiliarExtra.Dato.Email} \t\t\n");
-                        //                                Console.WriteLine($"\tTelefono: {auxiliarExtra.Dato.Telefono} \t\t\n");
-                        //                                Console.WriteLine($"\tCantidad de amigos: {auxiliarExtra.Dato.amigos.cantidadDeAmigos} \t\t\n");
-                        //                                Console.WriteLine(@$"
-                        //║                                            ║
-                        //╚════════════════════════════════════════════╝
-                        //");
-                        //                            }
-
-                        //                            auxiliarExtra = auxiliarExtra.Siguiente;
-                        //                        }while (auxiliarExtra != personas.getPrimero());
-
-                        //                            Console.ReadLine();
-                        //                        Console.Clear();
 
                         break;
 
