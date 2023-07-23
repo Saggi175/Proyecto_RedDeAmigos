@@ -20,6 +20,10 @@ namespace RedDeAmigos
         {
             return _primero == null;
         }
+        public Nodo getPrimero()
+        {
+            return _primero;
+        }
         public void AgregarPorCabeza(Persona valor)
         {
             Nodo nuevoNodo = new Nodo(valor);
@@ -109,7 +113,45 @@ namespace RedDeAmigos
             }
 
         }
-      
+//        public void ImprimirListaDeAmigosMutuos(string email)
+//        {
+
+//            Nodo auxliar = _primero;
+//            while (auxliar != null)
+//            {
+//            Nodo auxiliarAmingo = auxliar.Dato.amigos.getPrimero();
+
+//                //while ( auxiliarAmingo != null)
+//                //{
+//                    if(auxiliarAmingo.Dato.amigos.BuscarPorEmail(email) != null)
+//                    {
+//                        Console.Write(@$"       
+//╔════════════════════════════════════════════╗
+//║                                            ║
+//║                                            ║
+
+//");
+//                        Console.WriteLine($"\tNombre:{auxliar.Dato.Nombre} {auxliar.Dato.Apellido} \t\t\n");
+
+//                        Console.WriteLine($"\tEdad: {auxliar.Dato.Edad} \t\t\n");
+//                        Console.WriteLine($"\tEmail: {auxliar.Dato.Email} \t\t\n");
+//                        Console.WriteLine($"\tTelefono: {auxliar.Dato.Telefono} \t\t\n");
+//                        Console.WriteLine($"\tCantidad de amigos: {auxliar.Dato.amigos.cantidadDeAmigos} \t\t\n");
+//                        Console.WriteLine(@$"
+//║                                            ║
+//╚════════════════════════════════════════════╝
+//");
+//                    }
+//                    auxiliarAmingo = auxiliarAmingo.Siguiente;
+//                //}
+
+                
+//                auxliar = auxliar.Siguiente;
+//            }
+
+
+//        }
+
         public void EliminarPorValor(string email)//Creo que debo cambiar este tipo persona por un estrin que representa un email o numero de telefono.
         {
             Nodo auxiliar = _primero;
@@ -285,7 +327,7 @@ namespace RedDeAmigos
             Nodo actual = _primero;
             while (actual != null)
             {
-                if (actual.Dato.Email.ToString() == email)
+                if (actual.Dato.Email == email)
                 {
                     return actual.Dato;
                 }
