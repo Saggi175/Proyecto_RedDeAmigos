@@ -10,7 +10,7 @@ namespace RedDeAmigos
     {
         private Nodo _primero;
         private Nodo _ultimo;
-        private int cantidadDeAmigos;
+        public int cantidadDeAmigos;
         public ListaSimple()
         {
             _primero = _ultimo = null;
@@ -83,17 +83,33 @@ namespace RedDeAmigos
             }
 
         }
-        public void Imprimir()
+        public void ImprimirListaDeAmigos()
         {
+           
             Nodo auxliar = _primero;
             while (auxliar != null)
             {
-                Console.Write(auxliar.Dato.Nombre + " -> ");
+                Console.Write(@$"       
+╔════════════════════════════════════════════╗
+║                                            ║
+║                                            ║
+
+");
+                Console.WriteLine($"\tNombre:{auxliar.Dato.Nombre} {auxliar.Dato.Apellido} \t\t\n");
+
+                Console.WriteLine($"\tEdad: {auxliar.Dato.Edad} \t\t\n");
+                Console.WriteLine($"\tEmail: {auxliar.Dato.Email} \t\t\n");
+                Console.WriteLine($"\tTelefono: {auxliar.Dato.Telefono} \t\t\n");
+                Console.WriteLine($"\tCantidad de amigos: {auxliar.Dato.amigos.cantidadDeAmigos} \t\t\n");
+                Console.WriteLine(@$"
+║                                            ║
+╚════════════════════════════════════════════╝
+");
                 auxliar = auxliar.Siguiente;
             }
-            Console.WriteLine("Null");
 
         }
+      
         public void EliminarPorValor(string email)//Creo que debo cambiar este tipo persona por un estrin que representa un email o numero de telefono.
         {
             Nodo auxiliar = _primero;

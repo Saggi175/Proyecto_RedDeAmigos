@@ -1,6 +1,6 @@
 ﻿namespace RedDeAmigos
 {
-    internal class Program
+    public  class Program
     {
         const int m = 89;
         static string Iemail;
@@ -11,15 +11,7 @@
 
 
             //inicio();
-
-
-
             
-
-
-
-            
-
             personas.AgregarPorCola(new Persona("Alexander", "Suarez", 20, "809 546 1589", "alexander@gmail.com"));
             Directorio.Insertar(personas.Buscar("alexander@gmail.com"));
 
@@ -52,7 +44,7 @@
             personas.Buscar("juliopichardo@gmail.com").amigos.AgregarPorCola(personas.Buscar("juliopichardo@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
             personas.Buscar("juliopichardo@gmail.com").amigos.AgregarPorCola(personas.Buscar("juliopichardo@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
             personas.Buscar("Robelin@gmail.com").amigos.AgregarPorCola(personas.Buscar("Robelin@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
-            
+
             Console.WriteLine("\n");
             personas.ImprimirAmigosEnComun();
 
@@ -64,29 +56,17 @@
             //personas.Buscar("alexander@gmail.com").solicitudDeAmistad.Imprimir();// esto es una prebua, no es la vesion final
 
 
-            //Console.WriteLine("╔══════════════════════════════════════════════════════════════════════════╗");
-            //Console.WriteLine("║                          Menú de Opciones                                ║");
-            //Console.WriteLine("╟──────────────────────────────────────────────────────────────────────────╢");
-            //Console.WriteLine("║ 1. Agregar una persona nueva                                             ║");
-            //Console.WriteLine("║ 2. Agregar un amigo a la persona visualizada                             ║");
-            //Console.WriteLine("║ 3. Imprimir amigos aceptados de la persona visualizada                   ║");
-            //Console.WriteLine("║ 4. Imprimir amigos mutuos de la persona visualizada                      ║");
-            //Console.WriteLine("║ 5. Imprimir personas que tienen a la persona visualizada como amigo      ║");
-            //Console.WriteLine("║ 6. Trabajar con la cola de solicitudes de amistad                        ║");
-            //Console.WriteLine("║ 7. Armar árbol con la persona visualizada como raíz y imprimir el árbol  ║");
-            //Console.WriteLine("║ 8. Imprimir listado de personas en orden ascendente                      ║");
-            //Console.WriteLine("║ 9. Imprimir listado de personas en orden descendente                     ║");
-            //Console.WriteLine("║ 10. Imprimir factor de carga del directorio telefónico                   ║");
-            //Console.WriteLine("║ 0. Salir                                                                 ║");
-            //Console.WriteLine("╚══════════════════════════════════════════════════════════════════════════╝");
-
 
             NodoDoble personaActual = personas.getPrimero();
             string op = "s";
-            while(op.ToLower() != "n")
+            Console.Clear();
+
+            while (op.ToLower() != "n")
             {
+                Console.Clear();
+
                 Console.Write(@$"
-       
+Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}       
 ╔════════════════════════════════════════════╗
 ║                                            ║
 ║                                            ║
@@ -103,32 +83,35 @@
 
 ");
                 Console.WriteLine($"\tNombre:{personaActual.Dato.Nombre} {personaActual.Dato.Apellido} \t\t\n");
-                
+
                 Console.WriteLine($"\tEdad: {personaActual.Dato.Edad} \t\t\n");
                 Console.WriteLine($"\tEmail: {personaActual.Dato.Email} \t\t\n");
-                Console.WriteLine($"\tEmail: {personaActual.Dato.Telefono} \t\t\n");
-                
-
+                Console.WriteLine($"\tTelefono: {personaActual.Dato.Telefono} \t\t\n");
+                Console.WriteLine($"\tCantidad de amigos: {personaActual.Dato.amigos.cantidadDeAmigos} \t\t\n");
                 Console.Write(@$"
-
-
-
 ║                                            ║
 ╚════════════════════════════════════════════╝
 ");
                 Console.Write(@"
-╔═══════════════╗   ╔═══════════════╗  ╔═════════════════════════════════╗ ╔═══════════════════════════════════╗ ╔══════════════════════════════╗
-║ (s) siguente  ║   ║ (n) parar     ║  ║ (a) agregar a lista de personas ║ ║ (e) enviar solicitudad de amistad ║ ║ (v) ver solicitud de amistad ║
-╚═══════════════╝   ╚═══════════════╝  ╚═════════════════════════════════╝ ╚═══════════════════════════════════╝ ╚══════════════════════════════╝
+╔═══════════════╗   ╔═══════════════╗  ╔═════════════════════════════════╗ 
+║ (s) siguente  ║   ║ (n) parar     ║  ║ (a) agregar a lista de personas ║ 
+╚═══════════════╝   ╚═══════════════╝  ╚═════════════════════════════════╝ 
+╔═══════════════════════════════════╗ ╔══════════════════════════════╗
+║ (e) enviar solicitudad de amistad ║ ║ (v) ver solicitud de amistad ║
+╚═══════════════════════════════════╝ ╚══════════════════════════════╝
+╔═══════════════════╗
+║ (l) listar amigos ║
+╚═══════════════════╝
 ");
                 op = Console.ReadLine();
+
                 Console.Clear();
                 switch (op.ToLower())
                 {
                     case "s":
-                        personaActual = personaActual.Siguiente; 
+                        personaActual = personaActual.Siguiente;
 
-                    break;
+                        break;
 
                     case "a":
                         Console.Clear();
@@ -152,19 +135,17 @@
                         personas.AgregarPorCola(new Persona(nombre, apellido, Convert.ToInt32(edad), telefono, email));
                         Console.Clear();
 
-                    break;
+                        break;
 
                     case "e":
-
-                        
                         Console.WriteLine("Introduce correo de la persona a la que quieres enviar la solicitud:");
-                        Iemail = Console.ReadLine();
-                        personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PushPorEmail(personas, Iemail);
-                    break;
+                        Iemail = Console.ReadLine().Replace(" ", "");
+                        personas.Buscar(Iemail).solicitudDeAmistad.PushPorEmail(personas, personaActual.Dato.Email);
+                        break;
 
                     case "v":
-                        
-                        if(personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo() != null)
+
+                        while (personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.CantidadDeSolicitud > 0)
                         {
                             Console.Write(@$"
        
@@ -187,7 +168,7 @@
 
                             Console.WriteLine($"\tEdad: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Edad} \t\t\n");
                             Console.WriteLine($"\tEmail: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Email} \t\t\n");
-                            Console.WriteLine($"\tEmail: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Telefono} \t\t\n");
+                            Console.WriteLine($"\tTelefono: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Telefono} \t\t\n");
 
 
                             Console.Write(@$"
@@ -210,10 +191,27 @@
                             if (aceptar.ToLower() == "a")
                             {
                                 personas.Buscar(personaActual.Dato.Email).amigos.AgregarPorCola(personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.Pop().Dato);
+                                personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.CantidadDeSolicitud--;
                             }
+                            else if (aceptar.ToLower() == "r")
+                            {
+                                personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.Pop();
+                            }
+                            Console.Clear();
                         }
-                        
+                        if (personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.CantidadDeSolicitud <= 0)
+                        {
+                            Console.WriteLine("No hay mas solicitud de amistad, presiona enter para segir.");
+                            Console.ReadLine();
+                            Console.Clear();
+                        }
 
+                        break;
+
+                    case "l":
+                        Console.Clear();
+                        personaActual.Dato.amigos.ImprimirListaDeAmigos();
+                        Console.ReadLine();
                         break;
 
 
@@ -222,15 +220,17 @@
 
                 }
                 if (op.ToLower() == "s")
-                    
 
-                Console.Clear();
+
+                    Console.Clear();
             }
-            
+
 
 
 
         }
+
+        
 
         private static void inicio()
         {
@@ -242,6 +242,7 @@
             ██║  ██║███████╗██████╔╝    ██████╔╝███████╗    ██║  ██║██║ ╚═╝ ██║██║╚██████╔╝╚██████╔╝███████║
             ╚═╝  ╚═╝╚══════╝╚═════╝     ╚═════╝ ╚══════╝    ╚═╝  ╚═╝╚═╝     ╚═╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
             ");
+            
 
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\t\tCargando Red de amigos...");
 

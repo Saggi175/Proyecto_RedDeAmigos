@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace RedDeAmigos
 {
-    internal class ListaCircularDoble
+     class ListaCircularDoble
     {
         private NodoDoble _primero;
         private NodoDoble _ultimo;
-        private int cantidadDePersonas;
+        public int CantidadDePersonas { get; set;  }
 
         public NodoDoble getUltimo()
         {
@@ -24,7 +24,7 @@ namespace RedDeAmigos
         public ListaCircularDoble()
         {
             _primero = _ultimo = null;
-            cantidadDePersonas = 0;
+            CantidadDePersonas = 0;
         }
 
         public bool EsVacia()
@@ -56,7 +56,7 @@ namespace RedDeAmigos
                     _primero = nuevoNodo;
                     _ultimo.Siguiente = nuevoNodo;
                 }
-                cantidadDePersonas++;
+                CantidadDePersonas++;
             }
             else
             {
@@ -87,7 +87,7 @@ namespace RedDeAmigos
                     _ultimo = nuevoNodo;
                     _primero.Anterior = _ultimo;
                 }
-                cantidadDePersonas++;
+                CantidadDePersonas++;
             }
            else
             {
@@ -166,7 +166,7 @@ namespace RedDeAmigos
                         }
                     }
                 }
-                cantidadDePersonas++;
+                CantidadDePersonas++;
             }
             else
             {
@@ -190,7 +190,7 @@ namespace RedDeAmigos
                 tmp.Siguiente = null;
                 tmp.Anterior = null;
                 tmp.Dato = null;
-                cantidadDePersonas--;
+                CantidadDePersonas--;
                 return;
 
                 //_primero = _primero.Siguiente;
@@ -208,7 +208,7 @@ namespace RedDeAmigos
                 NodoDoble tmp = auxiliar.Siguiente;
                 tmp.Siguiente.Anterior = tmp;
                 auxiliar.Siguiente = tmp.Siguiente;
-                cantidadDePersonas--;
+                CantidadDePersonas--;
 
                 if (tmp.Siguiente != null)
                     tmp.Siguiente.Anterior = auxiliar;
@@ -234,7 +234,7 @@ namespace RedDeAmigos
                 _primero.Siguiente.Anterior = _primero.Anterior;
                 _primero.Anterior.Siguiente = _primero.Siguiente;
                 _primero = _primero.Siguiente;
-                cantidadDePersonas--;
+                CantidadDePersonas--;
 
                 if (_primero == null)
                 {
@@ -263,7 +263,7 @@ namespace RedDeAmigos
                         _ultimo = aux;
                     }
                 }
-                cantidadDePersonas--;
+                CantidadDePersonas--;
             }
         }
 
@@ -312,7 +312,7 @@ namespace RedDeAmigos
                         }
                     }
                 }
-                cantidadDePersonas++;
+                CantidadDePersonas++;
             }
             else
             {
@@ -338,18 +338,13 @@ namespace RedDeAmigos
             }
             return null;
         }
-
-        public int CantidadDePersonas()
-        {
-            return cantidadDePersonas;
-        }
         public void ImprimirAmigosEnComun()
         {
             Console.WriteLine("Personas que comparten amistad:");
 
             NodoDoble actual = _primero;
 
-            while (actual != null)
+            do
             {
                 Nodo amigoActual = actual.Dato.amigos.RetornarNodo();
 
@@ -363,11 +358,12 @@ namespace RedDeAmigos
                 }
                 actual = actual.Siguiente;
 
-                if (actual == _primero) // Evitar bucle infinito en una lista circular
-                {
-                    break;
-                }
-            }
+                //if (actual == _primero) // Evitar bucle infinito en una lista circular
+                //{
+                //    break;
+                //}
+
+            } while (actual != _primero) ;
         }
     }
 }
