@@ -31,11 +31,22 @@ namespace RedDeAmigos
         public Persona ValorNodo() { return dato; }
         public NodoArbol Primogenito() { return _primerHijo; }
 
-        public void Visitar()
+        public void Visitar(int nivel)
         {
-            Console.WriteLine(dato);
-            VisitarHijos();
+            string indentacion = new string(' ', nivel * 4);
+            Console.WriteLine(indentacion + "└─ " + dato.Nombre + " " + dato.Apellido);
+
+            if (_primerHijo != null)
+            {
+                NodoArbol hijoActual = _primerHijo;
+                while (hijoActual != null)
+                {
+                    hijoActual.Visitar(nivel + 1);
+                    hijoActual = hijoActual.Siguiente;
+                }
+            }
         }
+
         // operaciones de modificación
         public void NuevoValor(Persona d) { dato = d; }
 
@@ -60,7 +71,7 @@ namespace RedDeAmigos
             NodoArbol aux = _primerHijo;
             while (aux != null)
             {
-                aux.Visitar();
+                aux.Visitar(0);
                 aux = aux.Siguiente;
             }
         }

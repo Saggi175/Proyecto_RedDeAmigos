@@ -10,10 +10,32 @@ namespace RedDeAmigos
         {
             ListaCircularDoble personas = new ListaCircularDoble();
             TablaDispersa directorio = new TablaDispersa(m);
+            TablaDispersa tablaHash = new TablaDispersa(100);
+            Arbol arbol = new Arbol();
+
+            Persona persona1 = new Persona("Juan", "Pérez", 30, "111111", "juan@example.com");
+            Persona persona2 = new Persona("María", "Gómez", 28, "222222", "maria@example.com");
+            Persona persona3 = new Persona("Pedro", "López", 25, "333333", "pedro@example.com");
+            Persona persona4 = new Persona("Jesus", "López", 25, "333333", "pedro@example.com");
+            Persona persona5 = new Persona("Marco", "López", 25, "333333", "pedro@example.com");
+
+            persona1.amigos.AgregarPorCola(persona2);
+            persona1.amigos.AgregarPorCola(persona3);
+
+            persona2.amigos.AgregarPorCola(persona4);
+            persona4.amigos.AgregarPorCola(persona5);
+
+
+            //persona2.amigos.AgregarPorCola(persona1);
+
+            // Construir el árbol con la persona raíz y la tabla hash
+
+            arbol.ConstruirArbol(persona1, tablaHash);
+            arbol.ImprimirArbol();
 
 
             //inicio();
-            
+
             personas.AgregarPorCola(new Persona("Alexander", "Suarez", 20, "809 546 1589", "alexander@gmail.com"));
             directorio.Insertar(personas.Buscar("alexander@gmail.com"));
 
@@ -69,12 +91,12 @@ namespace RedDeAmigos
  
             NodoDoble personaActual = personas.getPrimero();
             string op = "s";
-            Console.Clear();
+           // Console.Clear();
            
 
             while (op.ToLower() != "n")
             {
-                Console.Clear();
+               // Console.Clear();
 
                 Console.Write(@$"
 Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}
