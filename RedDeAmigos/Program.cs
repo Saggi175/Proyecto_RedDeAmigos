@@ -93,8 +93,17 @@ namespace RedDeAmigos
 ║ (a) ascendente ║ ║ (d) descendente ║  
 ╚════════════════╝ ╚═════════════════╝   
 ");
- 
-            NodoDoble personaActual = personas.getPrimero();
+            string opLista = Console.ReadLine().ToLower();
+            NodoDoble personaActual;
+            if (opLista == "d")
+                personaActual = personas.getUltimo();
+            else
+                personaActual = personas.getPrimero();
+
+
+            Console.Clear();
+
+
             string op = "s";
            // Console.Clear();
            
@@ -127,6 +136,8 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                 Console.WriteLine($"\tEmail: {personaActual.Dato.Email} \t\t\n");
                 Console.WriteLine($"\tTelefono: {personaActual.Dato.Telefono} \t\t\n");
                 Console.WriteLine($"\tCantidad de amigos: {personaActual.Dato.amigos.cantidadDeAmigos} \t\t\n");
+                Console.Write($"\tSolicitud pendientes: {personaActual.Dato.solicitudDeAmistad.CantidadDeSolicitud} \t\t\n");
+
                 Console.Write(@$"
 ║                                            ║
 ╚════════════════════════════════════════════╝
@@ -148,6 +159,10 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                 switch (op.ToLower())
                 {
                     case "s":
+                        if (opLista == "d")
+                            personaActual = personaActual.Anterior;
+
+                        else
                         personaActual = personaActual.Siguiente;
 
                         break;
@@ -171,9 +186,10 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                         Console.Write("email: ");
                         email = Console.ReadLine();
                         Persona tempora = new Persona(nombre, apellido, Convert.ToInt32(edad), telefono, email);
+                        Console.Clear();
                         personas.AgregarPorCola(tempora);
                         directorio.Insertar(tempora);
-                        Console.Clear();
+                        
 
                         break;
 
@@ -304,6 +320,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                         //personaActual.Dato.amigos.ImprimirListaDeAmigosMutuos( personaActual.Dato.Email);
                         Nodo auxiliarExtra = personaActual.Dato.amigos.getPrimero();
 
+                        bool tengoAmigos = false;
                         while (auxiliarExtra != null)
                         {
                             if (auxiliarExtra.Dato.amigos.BuscarPorEmail(personaActual.Dato.Email)?.Email == null)
@@ -325,8 +342,19 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 ║                                            ║
 ╚════════════════════════════════════════════╝
 ");
+                                tengoAmigos = true;
+
                             }
                             auxiliarExtra = auxiliarExtra.Siguiente;
+                        }
+
+                        if (!tengoAmigos && personaActual.Dato.amigos.cantidadDeAmigos > 0)
+                        {
+                            Console.WriteLine("Todo tus amigos son correspondidos");
+                        }
+                        else if (!tengoAmigos && personaActual.Dato.amigos.cantidadDeAmigos <= 0)
+                        {
+                            Console.WriteLine("No tienes amigos");
                         }
 
                         Console.ReadLine();
