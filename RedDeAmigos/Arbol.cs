@@ -13,6 +13,10 @@ namespace RedDeAmigos
         {
             raiz = null;
         }
+        public void BorrarArbol()
+        {
+            raiz = null;
+        }
         public Arbol(NodoArbol r)
         {
             raiz = r;
@@ -50,7 +54,7 @@ namespace RedDeAmigos
                 return;
 
             // Verificar si la persona ya está en el árbol usando la tabla hash
-            if (tablaHash.Buscar(raiz.Email) != null)
+            if (tablaHash.Buscar(raiz.Telefono) != null)
                 return;
 
             // Insertar la persona raíz en la tabla hash y en el árbol
@@ -71,7 +75,7 @@ namespace RedDeAmigos
             while (amigo != null)
             {
                 // Verificar si el amigo ya está en el árbol usando la tabla hash
-                if (tablaHash.Buscar(amigo.Dato.Email) == null)
+                if (tablaHash.Buscar(amigo.Dato.Telefono) == null)
                 {
                     tablaHash.Insertar(amigo.Dato);
                     NodoArbol nodoHijo = new NodoArbol(amigo.Dato);

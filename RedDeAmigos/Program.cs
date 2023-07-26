@@ -16,22 +16,23 @@ namespace RedDeAmigos
             Persona persona1 = new Persona("Juan", "Pérez", 30, "111111", "juan@example.com");
             Persona persona2 = new Persona("María", "Gómez", 28, "222222", "maria@example.com");
             Persona persona3 = new Persona("Pedro", "López", 25, "333333", "pedro@example.com");
-            Persona persona4 = new Persona("Jesus", "López", 25, "333333", "pedro@example.com");
-            Persona persona5 = new Persona("Marco", "López", 25, "333333", "pedro@example.com");
+            Persona persona4 = new Persona("Jesus", "López", 25, "444444", "pedro@example.com");
+            Persona persona5 = new Persona("Marco", "López", 25, "555555", "pedro@example.com");
 
             persona1.amigos.AgregarPorCola(persona2);
             persona1.amigos.AgregarPorCola(persona3);
 
             persona2.amigos.AgregarPorCola(persona4);
             persona4.amigos.AgregarPorCola(persona5);
+            persona4.amigos.AgregarPorCola(persona1);
 
 
             //persona2.amigos.AgregarPorCola(persona1);
 
             // Construir el árbol con la persona raíz y la tabla hash
 
-            arbol.ConstruirArbol(persona1, tablaHash);
-            arbol.ImprimirArbol();
+            //arbol.ConstruirArbol(persona1, tablaHash);
+            //arbol.ImprimirArbol();
 
 
             //inicio();
@@ -70,6 +71,10 @@ namespace RedDeAmigos
             personas.Buscar("juliopichardo@gmail.com").amigos.AgregarPorCola(personas.Buscar("juliopichardo@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
             personas.Buscar("juliopichardo@gmail.com").amigos.AgregarPorCola(personas.Buscar("juliopichardo@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
             personas.Buscar("Robelin@gmail.com").amigos.AgregarPorCola(personas.Buscar("Robelin@gmail.com").solicitudDeAmistad.Pop().Dato); // esto seria lo que tendriamos que usar para aceptar solicitud
+
+
+            //arbol.ConstruirArbol(personas.Buscar("alexander@gmail.com"), tablaHash);
+            //arbol.ImprimirArbol();
 
             Console.WriteLine("\n");
             personas.ImprimirAmigosEnComun();
@@ -129,10 +134,10 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                 Console.Write(@"
 ╔═══════════════╗ ╔═══════════════╗ ╔═════════════════════════════════╗ 
 ║ (s) siguente  ║ ║ (n) parar     ║ ║ (a) agregar a lista de personas ║ 
-╚═══════════════╝ ╚═══════════════╝ ╚═════════════════════════════════╝ 
-╔═══════════════════════════════════╗ ╔══════════════════════════════╗
-║ (e) enviar solicitudad de amistad ║ ║ (v) ver solicitud de amistad ║
-╚═══════════════════════════════════╝ ╚══════════════════════════════╝
+╚═══════════════╝ ╚═══════════════╝ ╚═════════════════════════════════╝     
+╔═══════════════════════════════════╗ ╔══════════════════════════════╗ ╔═══════════════╗ 
+║ (e) enviar solicitudad de amistad ║ ║ (v) ver solicitud de amistad ║ ║ (t) ver arbol ║
+╚═══════════════════════════════════╝ ╚══════════════════════════════╝ ╚═══════════════╝
 ╔═══════════════════╗ ╔══════════════════════════════════╗ ╔═════════════════════════════════════╗
 ║ (l) listar amigos ║ ║ (m) listar amigos correspondidos ║ ║ (p) listar amigos no correspondidos ║
 ╚═══════════════════╝ ╚══════════════════════════════════╝ ╚═════════════════════════════════════╝
@@ -329,6 +334,12 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 
                         break;
 
+                    case "t":
+                        
+                        arbol.ConstruirArbol(personaActual.Dato, tablaHash);
+                        arbol.ImprimirArbol();
+                
+                        break;
 
 
 
