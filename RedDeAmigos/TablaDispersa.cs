@@ -10,11 +10,12 @@ namespace RedDeAmigos
     {
         private int _tamanoTabla;
         private ListaSimple[] tabla;
-
+        public int CantidadTelefono { get; set; }
         public TablaDispersa(int tamanoTabla)
         {
             _tamanoTabla = tamanoTabla;
             tabla = new ListaSimple[tamanoTabla];
+            CantidadTelefono = 0;
 
             for (int i = 0; i < tamanoTabla; i++)
             {
@@ -29,6 +30,7 @@ namespace RedDeAmigos
             {
                 int posicion = Direccion(persona.Telefono);
                 tabla[posicion].AgregarPorCola(persona);
+                CantidadTelefono++;
             }
             else
             {
@@ -46,6 +48,7 @@ namespace RedDeAmigos
         {
             int posicion = Direccion(clave);
             tabla[posicion].EliminarPorValor(clave);
+            CantidadTelefono--;
         }
 
         private int Direccion(string clave)
@@ -96,6 +99,10 @@ namespace RedDeAmigos
                 }
                 //Console.WriteLine();
             }
+        }
+        public float FactorDeCarga(int tamanoTabla)
+        {
+            return CantidadTelefono / (float)tamanoTabla;
         }
     }
 }

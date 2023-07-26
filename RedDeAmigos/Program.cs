@@ -9,22 +9,24 @@ namespace RedDeAmigos
         static void Main(string[] args)
         {
             ListaCircularDoble personas = new ListaCircularDoble();
-            TablaDispersa Directorio = new TablaDispersa(m);
+            TablaDispersa directorio = new TablaDispersa(m);
 
 
             //inicio();
             
             personas.AgregarPorCola(new Persona("Alexander", "Suarez", 20, "809 546 1589", "alexander@gmail.com"));
-            Directorio.Insertar(personas.Buscar("alexander@gmail.com"));
+            directorio.Insertar(personas.Buscar("alexander@gmail.com"));
 
             personas.AgregarPorCola(new Persona("Julio", "Pichardo", 19, "829 767 5954", "juliopichardo@gmail.com"));
-            Directorio.Insertar(personas.Buscar("juliopichardo@gmail.com"));
+            directorio.Insertar(personas.Buscar("juliopichardo@gmail.com"));
 
             personas.AgregarOrdenado(new Persona("Samuel", "Alarado", 22, "849 654 3123", "samuelalvarado@gmail.com"));
-            Directorio.Insertar(personas.Buscar("samuelalvarado@gmail.com"));
+            directorio.Insertar(personas.Buscar("samuelalvarado@gmail.com"));
 
             personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 768 5954", "Robelin@gmail.com"));
-            Directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
+            directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
+
+            Console.WriteLine(directorio.FactorDeCarga(m));
 
             //personas.Imprimir();
             //personas.ImprimirReversa();
@@ -75,7 +77,8 @@ namespace RedDeAmigos
                 Console.Clear();
 
                 Console.Write(@$"
-Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}       
+Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}
+factor de carga del directorio: {directorio.FactorDeCarga(m)}
 ╔════════════════════════════════════════════╗
 ║                                            ║
 ║                                            ║
@@ -140,8 +143,9 @@ Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}
                         Console.WriteLine();
                         Console.Write("email: ");
                         email = Console.ReadLine();
-
-                        personas.AgregarPorCola(new Persona(nombre, apellido, Convert.ToInt32(edad), telefono, email));
+                        Persona tempora = new Persona(nombre, apellido, Convert.ToInt32(edad), telefono, email);
+                        personas.AgregarPorCola(tempora);
+                        directorio.Insertar(tempora);
                         Console.Clear();
 
                         break;
