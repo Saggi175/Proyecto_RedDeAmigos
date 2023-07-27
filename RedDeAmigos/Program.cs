@@ -13,7 +13,7 @@ namespace RedDeAmigos
             TablaDispersa tablaHash = new TablaDispersa(100);
             Arbol arbol = new Arbol();
 
-            //inicio();
+            inicio();
 
             //Base de datos de personas
             personas.AgregarPorCola(new Persona("Alexander", "Suarez", 20, "809 546 1589", "alexander@gmail.com"));
@@ -282,7 +282,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 
                         if (!correspodidos)
                         {
-                            Console.WriteLine("No tienes amigos");
+                            Console.WriteLine("No tienes amigos o No tienes amigos correspondidos");
                         }
 
                         Console.ReadLine();
@@ -383,7 +383,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 
                         if (!seguidosMutuo && personaActual.Dato.amigos.cantidadDeAmigos > 0)
                         {
-                            Console.WriteLine("Sigues a todo los que te siguen");
+                            Console.WriteLine("Sigues a todo los que te siguen o Nadie te sigue");
                         }
                         else if (!seguidosMutuo && personaActual.Dato.amigos.cantidadDeAmigos <= 0)
                         {
