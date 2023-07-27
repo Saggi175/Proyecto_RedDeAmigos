@@ -252,6 +252,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 
                         Console.Clear();
                         Nodo auxiliar = personaActual.Dato.amigos.getPrimero();
+                        bool correspodidos = false;
 
                         while (auxiliar != null)
                         {
@@ -274,10 +275,16 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 ║                                            ║
 ╚════════════════════════════════════════════╝
 ");
+                                correspodidos = true;                                
                             }
                             auxiliar = auxiliar.Siguiente;
                         }
-                         
+
+                        if (!correspodidos)
+                        {
+                            Console.WriteLine("No tienes amigos");
+                        }
+
                         Console.ReadLine();
                         Console.Clear();
 

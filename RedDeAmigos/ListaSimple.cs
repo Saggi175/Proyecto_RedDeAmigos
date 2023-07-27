@@ -116,6 +116,11 @@ namespace RedDeAmigos
 ");
                 auxliar = auxliar.Siguiente;
             }
+
+            if (_primero == null)
+            {
+                Console.WriteLine("No tienes amigos");
+            }
         }
 
         public void EliminarPorValor(string email)
