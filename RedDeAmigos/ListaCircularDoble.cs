@@ -17,10 +17,12 @@ namespace RedDeAmigos
         {
             return _ultimo;
         }
+
         public NodoDoble getPrimero()
         {
             return _primero;
         }
+
         public ListaCircularDoble()
         {
             _primero = _ultimo = null;
@@ -193,9 +195,6 @@ namespace RedDeAmigos
                 CantidadDePersonas--;
                 return;
 
-                //_primero = _primero.Siguiente;
-                //_primero.Anterior = _ultimo;
-                //_ultimo.Siguiente = _primero;
             }
             else
             {
@@ -338,6 +337,7 @@ namespace RedDeAmigos
             }
             return null;
         }
+
         public void ImprimirAmigosEnComun()
         {
             Console.WriteLine("Personas que comparten amistad:");
@@ -358,12 +358,8 @@ namespace RedDeAmigos
                 }
                 actual = actual.Siguiente;
 
-                //if (actual == _primero) // Evitar bucle infinito en una lista circular
-                //{
-                //    break;
-                //}
+            } while (actual != _primero);
 
-            } while (actual != _primero) ;
         }
-    }
+     }
 }

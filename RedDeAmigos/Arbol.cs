@@ -41,8 +41,6 @@ namespace RedDeAmigos
             return raiz == null;
         }
 
-
-        // Recorrido de un árbol Arbol en preorden
         public void Recorrer()
         {
             raiz.Visitar(0);
@@ -86,7 +84,6 @@ namespace RedDeAmigos
             }
         }
 
-        // Agrega este método para imprimir el nodo raíz del árbol después de construirlo
         public void ImprimirArbol()
         {
             if (esVacio())

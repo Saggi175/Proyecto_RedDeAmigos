@@ -10,7 +10,9 @@ namespace RedDeAmigos
     {
         private int _tamanoTabla;
         private ListaSimple[] tabla;
+
         public int CantidadTelefono { get; set; }
+
         public TablaDispersa(int tamanoTabla)
         {
             _tamanoTabla = tamanoTabla;
@@ -25,7 +27,7 @@ namespace RedDeAmigos
 
         public void Insertar(Persona persona)
         {
-            bool esRepetido = Buscar(persona.Telefono)!= null; //No detecta los numeros 
+            bool esRepetido = Buscar(persona.Telefono)!= null; 
             if (!esRepetido)
             {
                 int posicion = Direccion(persona.Telefono);
@@ -87,8 +89,6 @@ namespace RedDeAmigos
                 ListaSimple lista = tabla[i];
                 Nodo actual = lista.RetornarNodo();
 
-                //Console.WriteLine("Posición {0}:", i);
-
                 while (actual != null)
                 {
                     Console.WriteLine("Numeros: {0}", actual.Dato.Telefono);
@@ -96,10 +96,10 @@ namespace RedDeAmigos
                     Console.WriteLine("------------------");
 
                     actual = actual.Siguiente;
-                }
-                //Console.WriteLine();
+                }                
             }
         }
+
         public float FactorDeCarga(int tamanoTabla)
         {
             return CantidadTelefono / (float)tamanoTabla;

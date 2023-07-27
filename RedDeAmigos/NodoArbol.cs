@@ -19,6 +19,7 @@ namespace RedDeAmigos
             Siguiente = _primerHijo = _ultimoHijo = null;
 
         }
+
         public NodoArbol(Persona valor, NodoArbol primogenito)
         {
             dato = valor;
@@ -27,8 +28,8 @@ namespace RedDeAmigos
             Siguiente = null;
         }
 
-        // operaciones de acceso
         public Persona ValorNodo() { return dato; }
+
         public NodoArbol Primogenito() { return _primerHijo; }
 
         public void Visitar(int nivel)
@@ -47,7 +48,6 @@ namespace RedDeAmigos
             }
         }
 
-        // operaciones de modificación
         public void NuevoValor(Persona d) { dato = d; }
 
         public void AgregarHijo(NodoArbol nuevoHijo)

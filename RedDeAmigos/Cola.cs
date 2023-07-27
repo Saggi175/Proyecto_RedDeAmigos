@@ -10,7 +10,9 @@ namespace RedDeAmigos
     {
         private Nodo cima;
         private Nodo _ultimo;
+
         public int CantidadDeSolicitud { get; set; }
+
         public Cola()
         {
             cima = _ultimo = null;
@@ -37,9 +39,10 @@ namespace RedDeAmigos
             }
             CantidadDeSolicitud++;
         }
-        public void PushPorEmail(ListaCircularDoble persona, string email)// es un agregar por cola modificado para que agrege por email
+
+        public void PushPorEmail(ListaCircularDoble persona, string email)
         {
-            bool correoRepetido = BuscarPorEmail(persona.Buscar(email).Email)!= null;//Creo que hace falta hacer que verifique que no te este entrando a ti mismo en el correo
+            bool correoRepetido = BuscarPorEmail(persona.Buscar(email).Email)!= null;
             
             
             if (!correoRepetido)
@@ -62,6 +65,7 @@ namespace RedDeAmigos
             }
            
         }
+
         public Persona BuscarPorEmail(string email)
         {
             Nodo actual = cima;
@@ -75,6 +79,7 @@ namespace RedDeAmigos
             }
             return null;
         }
+
         public Nodo Pop()
         {
             Nodo auxiliar = cima;
@@ -103,14 +108,6 @@ namespace RedDeAmigos
 
             return nuevoNodo;
         }
-
-        //public int PeeKValor()
-        //{
-        //    if (EsVacia())
-        //        return -1;
-
-        //    return cima.Dato;
-        //}
 
         public void Imprimir()
         {
