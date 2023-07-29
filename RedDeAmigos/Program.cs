@@ -10,7 +10,7 @@ namespace RedDeAmigos
         {
             ListaCircularDoble personas = new ListaCircularDoble();
             TablaDispersa directorio = new TablaDispersa(m);
-            TablaDispersa tablaHash = new TablaDispersa(100);
+            TablaDispersa tablaHash = new TablaDispersa(m);
             Arbol arbol = new Arbol();
 
             inicio();
@@ -340,6 +340,8 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                     case "t":
 
                         Console.Clear();
+                        tablaHash = new TablaDispersa(m);
+                        arbol = new Arbol();
                         arbol.ConstruirArbol(personaActual.Dato, tablaHash);
                         arbol.ImprimirArbol();
                         Console.ReadLine();
