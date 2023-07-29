@@ -71,7 +71,7 @@ namespace RedDeAmigos
             Nodo actual = cima;
             while (actual != null)
             {
-                if (actual.Dato.Email.ToString() == email)
+                if (actual.Dato.Email == email)
                 {
                     return actual.Dato;
                 }
