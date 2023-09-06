@@ -22,11 +22,15 @@ namespace RedDeAmigos
             personas.AgregarPorCola(new Persona("Julio", "Pichardo", 19, "829 767 5954", "juliopichardo@gmail.com"));
             directorio.Insertar(personas.Buscar("juliopichardo@gmail.com"));
 
-            personas.AgregarOrdenado(new Persona("Samuel", "Alarado", 22, "849 654 3123", "samuelalvarado@gmail.com"));
+            personas.AgregarOrdenado(new Persona("Samuel", "Alvarado", 22, "849 654 3123", "samuelalvarado@gmail.com"));
             directorio.Insertar(personas.Buscar("samuelalvarado@gmail.com"));
 
             personas.AgregarOrdenado(new Persona("Robelin", "Concepcion", 17, "829 768 5954", "Robelin@gmail.com"));
             directorio.Insertar(personas.Buscar("Robelin@gmail.com"));
+
+            //directorio.Imprimir();
+            //personas.Imprimir();
+            //personas.ImprimirReversa();
 
             //Envio de solicitud de amistad
             personas.Buscar("alexander@gmail.com").solicitudDeAmistad.PushPorEmail(personas, "juliopichardo@gmail.com");
@@ -92,7 +96,7 @@ namespace RedDeAmigos
                 Console.Write(@$"
 ║                                            ║
 ╚════════════════════════════════════════════╝
-Cantidad de personas agregadad actualmente: {personas.CantidadDePersonas}
+Cantidad de personas agregadas actualmente: {personas.CantidadDePersonas}
 factor de carga del directorio: {directorio.FactorDeCarga(m)}
 ");
                 Console.Write(@"
@@ -189,8 +193,8 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                 ╚╩╩╩╩╩╩╩╩╩╩╩╩╝
 
 ");
-                            Console.WriteLine($"\tNombre:{personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Nombre} {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Apellido}\t\t\n");
-
+                            Console.WriteLine($"\tNombre:{personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Nombre} " +
+                            $"{personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Apellido}\t\t\n");
                             Console.WriteLine($"\tEdad: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Edad} \t\t\n");
                             Console.WriteLine($"\tEmail: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Email} \t\t\n");
                             Console.WriteLine($"\tTelefono: {personas.Buscar(personaActual.Dato.Email).solicitudDeAmistad.PeekNodo().Dato.Telefono} \t\t\n");
@@ -325,7 +329,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
 
                         if (!tengoAmigos && personaActual.Dato.amigos.cantidadDeAmigos > 0)
                         {
-                            Console.WriteLine("Todo tus amigos son correspondidos");
+                            Console.WriteLine("Todos tus amigos son correspondidos");
                         }
                         else if (!tengoAmigos && personaActual.Dato.amigos.cantidadDeAmigos <= 0)
                         {
@@ -358,7 +362,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                         do
                         {
                             if (auxiliarDoble.Dato.amigos.BuscarPorEmail(personaActual.Dato.Email)?.Email != null && 
-                                personaActual.Dato.amigos.BuscarPorEmail(auxiliarDoble.Dato.Email)== null)
+                                personaActual.Dato.amigos.BuscarPorEmail(auxiliarDoble.Dato.Email) == null)
                             {
 
                                 Console.Write(@$"       
@@ -376,7 +380,7 @@ factor de carga del directorio: {directorio.FactorDeCarga(m)}
                                 Console.WriteLine(@$"
 ║                                            ║
 ╚════════════════════════════════════════════╝
-");
+");                                //Es realmente no te sigue 
                                 seguidosMutuo = true;
 
                             }
